@@ -671,15 +671,17 @@ const Home: React.FC = () => {
                                             {taskForm.files.map((file, index) => (
                                                 <li key={index}>{file}</li>
                                             ))}
-                                            {previewFiles.length > 0 && (
-                                                <ul>
-                                                    {previewFiles.map((file, index) => (
-                                                        <li key={index} className="renderFile" >{renderFilePreview(file)}</li>
-                                                    ))}
-                                                </ul>
-                                            )}
+
+
                                         </ul>
                                     </div>
+                                )}
+                                {previewFiles.length > 0 && (
+                                    <ul>
+                                        {previewFiles.map((file, index) => (
+                                            <li key={index} className="renderFile" >{renderFilePreview(file)}</li>
+                                        ))}
+                                    </ul>
                                 )}
 
                             </div>
