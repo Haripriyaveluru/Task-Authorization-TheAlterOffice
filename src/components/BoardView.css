@@ -1,0 +1,29 @@
+.BoardContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+}
+
+.BoardTopRow {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.BoardHeader {
+    margin: 0 0 5px;
+    padding-left: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.noTasks {
+    text-align: center;
+    padding: 10px;
+    color: #888;
+}

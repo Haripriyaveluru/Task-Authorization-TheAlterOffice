@@ -1,0 +1,83 @@
+.taskCard {
+    cursor: move
+}
+
+.card {
+    padding: 10px;
+}
+
+.taskCheckbox {
+    display: flex;
+    align-items: center;
+}
+
+.space {
+    color: #ccc
+}
+
+.taskGeneral {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.taskGeneralDrop {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.taskDropdown {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.cardBody1 {
+    margin: 0;
+    height: 3vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Button {
+    display: flex;
+    align-items: center;
+}
+
+.span1 {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.cardBody2 {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 5px;
+    height: 10vh;
+}
+
+.taskCard2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.p {
+    margin: 0;
+    font-weight: bold;
+
+}
+
+.categoryDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: grey;
+    font-size: 12px;
+    padding-top: 20px;
+}

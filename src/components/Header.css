@@ -1,0 +1,152 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: '100%';
+    max-height: '15vh';
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.title h3 {
+    color: #7b1984;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    left: auto;
+    right: 0;
+}
+
+.profile-picture {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+.profile-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.header-second-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.radio-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #7b1984;
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #7b1984;
+    border-radius: 50px;
+}
+
+.header-third-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+}
+
+.category-select {
+    width: 10vw;
+}
+
+.date-picker {
+    width: 10vw;
+}
+
+.search-input {
+    width: 15vw;
+    margin-right: 10px;
+}
+
+.create-button {
+    background-color: #7b1984;
+    border-radius: 50px;
+}
+
+@media (max-width: 400px) {
+    .category-select {
+        width: 20vw !important;
+    }
+
+    .date-picker {
+        width: 20vw !important;
+    }
+
+    .search-input {
+        width: 20vw !important;
+    }
+
+    .radio-group {
+        display: none !important;
+
+    }
+
+    .logout-button {
+        margin-right: 0 !important;
+        margin-left: auto !important;
+    }
+
+
+}

@@ -1,0 +1,33 @@
+.kanbanContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+    height: 75vh;
+    flex-wrap: wrap;
+}
+
+.kanbanTopRow {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    min-height: 30vh;
+}
+
+.kanbanHeader {
+    border-radius: 15px;
+    padding: 5px;
+    position: sticky;
+}
+
+.kanabanColumn {
+    min-height: 100px;
+}
+
+.noTasks {
+    text-align: center;
+    padding: 10px;
+    color: #888;
+}
