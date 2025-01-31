@@ -48,3 +48,14 @@ export default tseslint.config({
   },
 })
 ```
+
+
+
+to run the project:
+----------------------
+npm run dev
+
+
+Host URL:
+--------------------
+https://task-auth-management.web.app
