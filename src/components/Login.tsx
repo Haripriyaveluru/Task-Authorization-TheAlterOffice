@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithPopup } from 'firebase/auth';
+import { onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import "./Login.css";
 import { auth, provider } from './Firebase';
 import { useTaskContext } from "../context/Context";
@@ -11,6 +11,25 @@ const Login: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { setUserDetails } = useTaskContext();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const userInfo = {
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    uid: user.uid
+                };
+                setUserDetails(userInfo);
+                navigate('/home');
+            }
+        });
+
+        // Cleanup subscription
+        return () => unsubscribe();
+    }, [navigate, setUserDetails]);
+
 
     const handleGoogleSignIn = async () => {
         try {
@@ -33,6 +52,7 @@ const Login: React.FC = () => {
 
                 if (!userSnap.exists()) {
                     await setDoc(userRef, userInfo);
+
                     console.log('User document created');
                 } else {
                     console.log('User document already exists');

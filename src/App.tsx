@@ -7,6 +7,7 @@ import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { TaskProvider } from './context/Context.tsx';
+import ProtectedRoute from './components/ProtectedRoute.tsx';
 
 const App: React.FC = () => {
 
@@ -16,7 +17,7 @@ const App: React.FC = () => {
         <TaskProvider>
 
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
             <Route path="/" element={<Login />} />
 
           </Routes>

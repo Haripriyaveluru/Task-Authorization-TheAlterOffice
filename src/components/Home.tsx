@@ -6,12 +6,13 @@ import './../App.css';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from "./Firebase";
+import { auth, db } from "./Firebase";
 import Header from './Header';
 import { createTaskInDb, updateTaskInDb, deleteTaskInDb } from './firestoreTasks';
 import BoardView from './BoardView';
 import KanbanView from './kanbanView';
 import './Home.css'
+import { useNavigate } from 'react-router-dom';
 
 dayjs.extend(isBetween);
 
@@ -39,15 +40,18 @@ const Home: React.FC = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [charCount, setCharCount] = useState<number>(300);
     const editorRef = useRef<HTMLDivElement | null>(null);
+    const navigate = useNavigate();
+    const [isLoading, setISLoading] = useState(true);
 
 
 
-    console.log(isModal2Open);
+    console.log(isModal2Open, isLoading);
 
     useEffect(() => {
         const fetchTasks = async () => {
             try {
                 if (!userDetails) return;
+                setISLoading(true);
                 const taskRef = collection(db, "tasks");
                 const q = query(taskRef, where("userId", "==", userDetails.uid));
                 const querySnapshot = await getDocs(q);
@@ -65,11 +69,13 @@ const Home: React.FC = () => {
                 console.log('tasks fetched successfully');
             } catch (error) {
                 console.error("Error fetching tasks:", error);
+            } finally {
+                setISLoading(false);
             }
         };
 
         fetchTasks();
-    }, [setTasks]);
+    }, [setTasks, userDetails]);
 
 
     useEffect(() => {
@@ -411,16 +417,31 @@ const Home: React.FC = () => {
         setSelectedTasks([]);
     };
 
-    const handleLogout = () => {
-        localStorage.clear();
-        window.location.href = '/';
-        setUserDetails({
-            displayName: '',
-            email: '',
-            photoURL: '',
-            uid: ''
-        });
+    // const handleLogout = () => {
+    //     localStorage.clear();
+    //     window.location.href = '/';
+    //     setUserDetails({
+    //         displayName: '',
+    //         email: '',
+    //         photoURL: '',
+    //         uid: ''
+    //     });
+    // };
+    const handleLogout = async () => {
+        try {
+            await auth.signOut();
+            setUserDetails({
+                displayName: '',
+                email: '',
+                photoURL: '',
+                uid: ''
+            });
+            navigate('/');
+        } catch (error) {
+            console.error('Error signing out:', error);
+        }
     };
+
 
     const renderFilePreview = (file: File) => {
         const fileType = file.type.split('/')[0];
